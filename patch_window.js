@@ -23,12 +23,13 @@ window.patchWindow = function () {
     // Call exec on an interval to force process messages.
     // http://stackoverflow.com/q/23352940/230462 and
     // http://stackoverflow.com/a/24319063/230462
+    if (typeof device !== "undefined") {
     if (device.platform === 'Android') {
         setInterval(function () {
             cordova.exec(null, null, '', '', [])
         }, 200);
     }
-
+}
     // Keep a reference to the in app browser's window.open.
     var __open = window.open,
         oauthWin;
