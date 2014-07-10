@@ -12,7 +12,6 @@ OAuth._endOfLoginResponse = function (res, details) {
     };
 
     if (details.error) {
-        alert(details.error.message);
         Log.warn("Error in OAuth Server: " +
             (details.error instanceof Error ?
                 details.error.message : details.error));
@@ -21,7 +20,6 @@ OAuth._endOfLoginResponse = function (res, details) {
     }
 
     if ("close" in details.query) {
-        alert("close in details");
         // If we have a credentialSecret, report it back to the parent
         // window, with the corresponding credentialToken. The parent window
         // uses the credentialToken and credentialSecret to log in over DDP.
@@ -39,7 +37,6 @@ OAuth._endOfLoginResponse = function (res, details) {
         }
         res.end(content(setCredentialSecret), "utf-8");
     } else {
-        alert("Details: "+JSON.stringify(details));
         res.end("", "utf-8");
     }
 };
